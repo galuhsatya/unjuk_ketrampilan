@@ -8,12 +8,12 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func AddUsers(c echo.Context) error {
+func AddProfiles(c echo.Context) error {
 
-	var user model.User
-	c.Bind(&user)
+	var profile model.Profile
+	c.Bind(&profile)
 
-	result := config.DB.Create(&user)
+	result := config.DB.Create(&profile)
 
 	if result.Error != nil {
 		return c.JSON(http.StatusInternalServerError, model.Response{
@@ -22,11 +22,11 @@ func AddUsers(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, model.Response{
-		Message: "sucess", Data: user,
+		Message: "sucess", Data: profile,
 	})
 }
 
-func GetDetailUsers(c echo.Context) error {
+func GetDetailProfiles(c echo.Context) error {
 	id := c.Param("id")
 	// logic
 	return c.JSON(http.StatusOK, model.Response{
@@ -34,10 +34,10 @@ func GetDetailUsers(c echo.Context) error {
 	})
 }
 
-func GetUsers(c echo.Context) error {
-	var users []model.User
+func GetProfiles(c echo.Context) error {
+	var profiles []model.Profile
 
-	result := config.DB.Find(&users)
+	result := config.DB.Find(&profiles)
 
 	if result.Error != nil {
 		return c.JSON(http.StatusInternalServerError, model.Response{
@@ -46,6 +46,6 @@ func GetUsers(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, model.Response{
-		Message: "sucess", Data: users,
+		Message: "sucess", Data: profiles,
 	})
 }

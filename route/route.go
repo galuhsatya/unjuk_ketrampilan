@@ -8,9 +8,9 @@ import (
 
 func InitRoute() *echo.Echo {
 	e := echo.New()
-	e.POST("/users", controller.AddUsers)
-	e.GET("/users", controller.GetUsers)
-	e.GET("/users/:id", controller.GetDetailUsers)
-	e.POST("/login", controller.Login)
+	e.POST("/profiles", controller.AddProfiles)
+	e.GET("/profiles", controller.GetProfiles)
+	e.GET("/profiles/:id", controller.GetDetailProfiles)
+
 	return e
 }

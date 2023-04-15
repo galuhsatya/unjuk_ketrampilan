@@ -1,6 +1,6 @@
 package model
 
-type User struct {
+type Profile struct {
 	Id      uint   `gorm:"primaryKey" json:"id"`
 	Name    string `json:"name"`
 	Age     int    `json:"age"`
